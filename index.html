@@ -6,6 +6,7 @@
 <title>Edin's 21st Birthday</title>
 
 <style>
+
 *{
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent
@@ -78,7 +79,7 @@ body{
 }
 
 
-/* LEFT OUTER FLOWERS */
+/* LEFT FLOWERS */
 .bf1{
   width:38%;
   height:28%;
@@ -89,7 +90,7 @@ body{
 }
 
 
-/* RIGHT OUTER FLOWERS */
+/* RIGHT FLOWERS */
 .bf2{
   width:38%;
   height:28%;
@@ -100,34 +101,14 @@ body{
 }
 
 
-/* LEFT INNER FLOWERS */
-.bf3{
-  width:30%;
-  height:23%;
-  left:17%;
-  bottom:-2%;
-  background:url('flowers-left.png') center bottom / contain no-repeat;
-  --d:.55s
-}
-
-
-/* RIGHT INNER FLOWERS */
-.bf4{
-  width:30%;
-  height:23%;
-  right:17%;
-  bottom:-2%;
-  background:url('flowers-right.png') center bottom / contain no-repeat;
-  --d:.78s
-}
-
-
 /* FLOWER ANIMATION */
+
 .done .bloom{
   animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
 }
 
 @keyframes bloom{
+
   0%{
     opacity:0;
     transform:scale(.05) rotate(-18deg)
@@ -142,23 +123,7 @@ body{
     opacity:1;
     transform:scale(1)
   }
-}
 
-@keyframes rose{
-  0%{
-    opacity:0;
-    transform:translateX(-50%) scale(.05) rotate(-35deg)
-  }
-
-  70%{
-    opacity:1;
-    transform:translateX(-50%) scale(1.15) rotate(6deg)
-  }
-
-  100%{
-    opacity:1;
-    transform:translateX(-50%) scale(1)
-  }
 }
 
 
@@ -238,18 +203,12 @@ body{
     bottom:70px
   }
 
-  /* Slightly smaller flowers on very small screens */
   .bf1,
   .bf2{
     width:40%;
     height:27%
   }
 
-  .bf3,
-  .bf4{
-    width:31%;
-    height:22%
-  }
 }
 
 
@@ -276,17 +235,24 @@ body{
   .hint{
     bottom:61px
   }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
 <main class="page">
 
-<section class="invite" id="invite" aria-label="Edin's 21st birthday invitation">
+<section class="invite"
+         id="invite"
+         aria-label="Edin's 21st birthday invitation">
+
 
   <!-- GATE FRAMES -->
+
   <img class="frame show"
        src="gate-frame-1.jpg"
        alt="Closed wrought-iron garden gates">
@@ -313,26 +279,25 @@ body{
 
 
   <!-- FLOWERS -->
+
   <div class="flowers">
 
     <i class="bloom bf1"></i>
 
     <i class="bloom bf2"></i>
 
-    <i class="bloom bf3"></i>
-
-    <i class="bloom bf4"></i>
-
   </div>
 
 
   <!-- HINT -->
+
   <p class="hint">
     Tap to open the garden gates
   </p>
 
 
   <!-- BUTTON -->
+
   <button class="control" id="control">
     Open the garden gates
   </button>
@@ -341,8 +306,13 @@ body{
 
 
 <!-- MUSIC -->
+
 <audio id="music" preload="auto">
-  <source src="la-vie-en-rose.mp3" type="audio/mpeg">
+
+  <source
+    src="la-vie-en-rose.mp3"
+    type="audio/mpeg">
+
 </audio>
 
 </main>
@@ -360,8 +330,11 @@ let waits = [];
 
 
 function clear(){
+
   waits.forEach(clearTimeout);
+
   waits = [];
+
 }
 
 
@@ -378,15 +351,20 @@ function reset(){
   b.textContent = 'Open the garden gates';
 
   m.pause();
+
   m.currentTime = 0;
+
 }
 
 
 b.onclick = () => {
 
   if(i.classList.contains('open')){
+
     return reset();
+
   }
+
 
   i.classList.add('open');
 
@@ -400,6 +378,7 @@ b.onclick = () => {
   [850,1700,2550,3600,6000].forEach((t,n) => {
 
     waits.push(
+
       setTimeout(() => {
 
         f[n].classList.remove('show');
@@ -408,10 +387,13 @@ b.onclick = () => {
 
 
         if(n === 4){
+
           i.classList.add('done');
+
         }
 
       },t)
+
     );
 
   });
