@@ -100,11 +100,26 @@ body{
   --d:.32s
 }
 
+  /* CENTRE ROSE */
+.rose{
+  width:32%;
+  height:28%;
+  left:50%;
+  bottom:-3%;
+  background:url('flowers-rose.png') center bottom / contain no-repeat;
+  transform:translateX(-50%) scale(.05) rotate(-35deg);
+  transform-origin:center bottom;
+  --d:1s
+}
 
 /* FLOWER ANIMATION */
 
 .done .bloom{
   animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+}
+
+  .done .rose{
+  animation:rose 1.2s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
 }
 
 @keyframes bloom{
@@ -124,6 +139,23 @@ body{
     transform:scale(1)
   }
 
+}
+
+  @keyframes rose{
+  0%{
+    opacity:0;
+    transform:translateX(-50%) scale(.05) rotate(-35deg)
+  }
+
+  70%{
+    opacity:1;
+    transform:translateX(-50%) scale(1.15) rotate(6deg)
+  }
+
+  100%{
+    opacity:1;
+    transform:translateX(-50%) scale(1)
+  }
 }
 
 
@@ -209,6 +241,11 @@ body{
     height:27%
   }
 
+    .rose{
+    width:34%;
+    height:27%
+  }
+
 }
 
 
@@ -285,6 +322,8 @@ body{
     <i class="bloom bf1"></i>
 
     <i class="bloom bf2"></i>
+
+    <i class="bloom rose"></i>
 
   </div>
 
