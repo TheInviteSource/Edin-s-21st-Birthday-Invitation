@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -76,24 +77,28 @@ body{
   bottom:0;
   height:24%;
   pointer-events:none;
-  opacity:0;
-  transform:translateY(18%) scale(.93);
-  transform-origin:center bottom;
-
-  background-image:url('white-flower.png?v=20260831-4');
-  background-position:center bottom;
-  background-repeat:no-repeat;
-  background-size:32% auto;
-}
-
-.bloom{
-  display:block;
-  position:absolute;
 }
 
 
 /* =========================
-   LEFT FLOWERS
+   WHITE FLOWER POSITIONS
+   ========================= */
+
+.bloom{
+  display:block;
+  position:absolute;
+
+  background-image:url('white-flower.png?v=20260831-4');
+  background-position:center bottom;
+  background-size:contain;
+  background-repeat:no-repeat;
+
+  opacity:0;
+}
+
+
+/* =========================
+   LEFT WHITE FLOWER
    ========================= */
 
 .bf1{
@@ -102,53 +107,37 @@ body{
   left:-3%;
   bottom:-2%;
 
-  background-image:url('flowers-left.png?v=20260831-4');
-  background-position:center bottom;
-  background-size:contain;
-  background-repeat:no-repeat;
-
   --d:.1s
 }
 
 
 /* =========================
-   RIGHT FLOWERS
+   CENTRE WHITE FLOWER
    ========================= */
 
 .bf2{
   width:32%;
   height:24%;
-  right:-3%;
+  left:50%;
   bottom:-2%;
 
-  background-image:url('flowers-right.png?v=20260831-4');
-  background-position:center bottom;
-  background-size:contain;
-  background-repeat:no-repeat;
+  transform:translateX(-50%);
 
   --d:.32s
 }
 
 
 /* =========================
-   CENTRE ROSE
+   RIGHT WHITE FLOWER
    ========================= */
 
-.rose{
-  width:27%;
+.bf3{
+  width:32%;
   height:24%;
-  left:50%;
-  bottom:-3%;
+  right:-3%;
+  bottom:-2%;
 
-  background-image:url('flowers-rose.png?v=20260831-4');
-  background-position:center bottom;
-  background-size:contain;
-  background-repeat:no-repeat;
-
-  transform:translateX(-50%) scale(.05) rotate(-35deg);
-  transform-origin:center bottom;
-
-  --d:1s
+  --d:.54s
 }
 
 
@@ -160,33 +149,6 @@ body{
   animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
 }
 
-.done .flowers{
-  animation:bouquet .9s cubic-bezier(.17,.88,.28,1.35) forwards
-}
-
-@keyframes bouquet{
-
-  0%{
-    opacity:0;
-    transform:translateY(18%) scale(.93)
-  }
-
-  70%{
-    opacity:1;
-    transform:translateY(-2%) scale(1.04)
-  }
-
-  100%{
-    opacity:1;
-    transform:translateY(0) scale(1)
-  }
-
-}
-
-
-.done .rose{
-  animation:rose 1.2s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
-}
 
 @keyframes bloom{
 
@@ -208,16 +170,23 @@ body{
 }
 
 
-@keyframes rose{
+/* Centre flower needs to keep its horizontal positioning */
+
+.done .bf2{
+  animation:bloomCentre .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+}
+
+
+@keyframes bloomCentre{
 
   0%{
     opacity:0;
-    transform:translateX(-50%) scale(.05) rotate(-35deg)
+    transform:translateX(-50%) scale(.05) rotate(-18deg)
   }
 
-  70%{
+  65%{
     opacity:1;
-    transform:translateX(-50%) scale(1.15) rotate(6deg)
+    transform:translateX(-50%) scale(1.13) rotate(7deg)
   }
 
   100%{
@@ -276,13 +245,9 @@ body{
   }
 
   .bf1,
-  .bf2{
+  .bf2,
+  .bf3{
     width:34%;
-    height:24%
-  }
-
-  .rose{
-    width:29%;
     height:24%
   }
 
@@ -312,8 +277,8 @@ body{
 }
 
 </style>
-</head>
 
+</head>
 
 <body>
 
@@ -323,50 +288,49 @@ body{
          id="invite"
          aria-label="Edin's 21st birthday invitation">
 
-
   <!-- =========================
        GATE FRAMES
        ========================= -->
 
-  <img class="frame show"
-       src="gate-frame-1.png?v=20260831"
-       alt="Closed wrought-iron garden gates">
+<img class="frame show"
+    src="gate-frame-1.png?v=20260831"
+    alt="Closed wrought-iron garden gates">
 
-  <img class="frame"
-       src="gate-frame-2.png?v=20260831"
-       alt="">
+<img class="frame"
+    src="gate-frame-2.png?v=20260831"
+    alt="">
 
-  <img class="frame"
-       src="gate-frame-3.png?v=20260831"
-       alt="">
+<img class="frame"
+    src="gate-frame-3.png?v=20260831"
+    alt="">
 
-  <img class="frame"
-       src="gate-frame-4.png?v=20260831"
-       alt="">
+<img class="frame"
+    src="gate-frame-4.png?v=20260831"
+    alt="">
 
-  <img class="frame"
-       src="gate-frame-5.png?v=20260831"
-       alt="">
+<img class="frame"
+    src="gate-frame-5.png?v=20260831"
+    alt="">
 
-  <img class="frame"
-       src="gate-frame-6.png?v=20260831"
-       alt="Edin's 21st birthday invitation">
-
+<img class="frame"
+    src="gate-frame-6.png?v=20260831"
+    alt="Edin's 21st birthday invitation">
 
   <!-- =========================
-       FLOWERS
+       WHITE FLOWERS
        ========================= -->
 
   <div class="flowers">
 
-    <i class="bloom bf1"></i>
+```
+<i class="bloom bf1"></i>
 
-    <i class="bloom bf2"></i>
+<i class="bloom bf2"></i>
 
-    <i class="bloom rose"></i>
+<i class="bloom bf3"></i>
+```
 
   </div>
-
 
   <!-- =========================
        HINT
@@ -376,9 +340,7 @@ body{
     Tap to open the garden gates
   </p>
 
-
 </section>
-
 
 <!-- =========================
      MUSIC
@@ -386,14 +348,13 @@ body{
 
 <audio id="music" preload="auto">
 
-  <source
-    src="la-vie-en-rose.mp3"
-    type="audio/mpeg">
+<source
+ src="la-vie-en-rose.mp3"
+ type="audio/mpeg">
 
 </audio>
 
 </main>
-
 
 <script>
 
