@@ -66,7 +66,7 @@ body{
 
 
 /* =========================
-   FLOWERS
+   WHITE FLOWER
    ========================= */
 
 .flowers{
@@ -79,37 +79,26 @@ body{
   pointer-events:none;
 }
 
-
-/* =========================
-   WHITE FLOWER POSITIONS
-   ========================= */
-
 .bloom{
   display:block;
   position:absolute;
 
-  background-image:url('white-flower.png?v=20260831-4');
+  width:32%;
+  height:100%;
+
+  left:50%;
+  bottom:-2%;
+
+  background-image:url('white-flower.png?v=20260831-5');
   background-position:center bottom;
   background-size:contain;
   background-repeat:no-repeat;
 
   opacity:0;
-}
 
+  transform:translateX(-50%) scale(.05) rotate(-18deg);
 
-/* =========================
-   CENTRE WHITE FLOWER
-   ========================= */
-
-.bf2{
-  width:32%;
-  height:24%;
-  left:50%;
-  bottom:-2%;
-
-  transform:translateX(-50%);
-
-  --d:.32s
+  transform-origin:center bottom;
 }
 
 
@@ -118,38 +107,10 @@ body{
    ========================= */
 
 .done .bloom{
-  animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+  animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) .32s forwards
 }
-
 
 @keyframes bloom{
-
-  0%{
-    opacity:0;
-    transform:scale(.05) rotate(-18deg)
-  }
-
-  65%{
-    opacity:1;
-    transform:scale(1.13) rotate(7deg)
-  }
-
-  100%{
-    opacity:1;
-    transform:scale(1) rotate(0)
-  }
-
-}
-
-
-/* Centre flower needs to keep its horizontal positioning */
-
-.done .bf2{
-  animation:bloomCentre .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
-}
-
-
-@keyframes bloomCentre{
 
   0%{
     opacity:0;
@@ -216,11 +177,9 @@ body{
     bottom:25px
   }
 
-  .bf1,
-  .bf2,
-  .bf3{
+  .bloom{
     width:34%;
-    height:24%
+    height:100%
   }
 
 }
@@ -289,17 +248,13 @@ body{
     alt="Edin's 21st birthday invitation">
 
   <!-- =========================
-       WHITE FLOWERS
+       WHITE FLOWER
        ========================= -->
 
   <div class="flowers">
 
 ```
-<i class="bloom bf1"></i>
-
-<i class="bloom bf2"></i>
-
-<i class="bloom bf3"></i>
+<i class="bloom"></i>
 ```
 
   </div>
