@@ -66,7 +66,7 @@ body{
 
 
 /* =========================
-   WHITE FLOWER
+   FLOWERS
    ========================= */
 
 .flowers{
@@ -86,19 +86,53 @@ body{
   width:32%;
   height:100%;
 
-  left:50%;
-  bottom:-2%;
-
-  background-image:url('white-flower.png?v=20260831-5');
+  background-image:url('white-flower.png?v=20260831-6');
   background-position:center bottom;
   background-size:contain;
   background-repeat:no-repeat;
 
   opacity:0;
 
+  transform:scale(.05) rotate(-18deg);
+  transform-origin:center bottom;
+}
+
+
+/* =========================
+   LEFT WHITE FLOWER
+   ========================= */
+
+.bf-left{
+  left:-3%;
+  bottom:-2%;
+
+  --d:.1s;
+}
+
+
+/* =========================
+   CENTRE WHITE FLOWER
+   ========================= */
+
+.bf-center{
+  left:50%;
+  bottom:-2%;
+
   transform:translateX(-50%) scale(.05) rotate(-18deg);
 
-  transform-origin:center bottom;
+  --d:.32s;
+}
+
+
+/* =========================
+   RIGHT WHITE FLOWER
+   ========================= */
+
+.bf-right{
+  right:-3%;
+  bottom:-2%;
+
+  --d:.54s;
 }
 
 
@@ -107,10 +141,43 @@ body{
    ========================= */
 
 .done .bloom{
-  animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) .32s forwards
+  animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
 }
 
+
+/* =========================
+   LEFT + RIGHT ANIMATION
+   ========================= */
+
 @keyframes bloom{
+
+  0%{
+    opacity:0;
+    transform:scale(.05) rotate(-18deg)
+  }
+
+  65%{
+    opacity:1;
+    transform:scale(1.13) rotate(7deg)
+  }
+
+  100%{
+    opacity:1;
+    transform:scale(1) rotate(0)
+  }
+
+}
+
+
+/* =========================
+   CENTRE ANIMATION
+   ========================= */
+
+.done .bf-center{
+  animation:bloomCentre .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+}
+
+@keyframes bloomCentre{
 
   0%{
     opacity:0;
@@ -248,13 +315,17 @@ body{
     alt="Edin's 21st birthday invitation">
 
   <!-- =========================
-       WHITE FLOWER
+       WHITE FLOWERS
        ========================= -->
 
   <div class="flowers">
 
 ```
-<i class="bloom"></i>
+<i class="bloom bf-left"></i>
+
+<i class="bloom bf-center"></i>
+
+<i class="bloom bf-right"></i>
 ```
 
   </div>
