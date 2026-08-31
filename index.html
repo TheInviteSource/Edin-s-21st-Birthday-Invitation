@@ -41,7 +41,9 @@ body{
   background:#1b120e;
   box-shadow:0 18px 55px #000;
   border:1px solid #8c6949;
-  border-radius:3px
+  border-radius:3px;
+  cursor:pointer;
+  touch-action:manipulation
 }
 
 .frame{
@@ -52,7 +54,8 @@ body{
   object-fit:cover;
   opacity:0;
   transition:opacity .7s ease;
-  filter:contrast(1.02) saturate(.9)
+  filter:contrast(1.02) saturate(.9);
+  pointer-events:none
 }
 
 .frame:first-child,
@@ -71,12 +74,16 @@ body{
   left:0;
   right:0;
   bottom:0;
-  height:36%;
+  height:24%;
   pointer-events:none;
   opacity:0;
   transform:translateY(18%) scale(.93);
   transform-origin:center bottom;
-  background:url('white-flower.png?v=20260831-2') center bottom / 45% auto no-repeat;
+
+  background-image:url('white-flower.png?v=20260831-4');
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  background-size:32% auto;
 }
 
 .bloom{
@@ -85,40 +92,69 @@ body{
 }
 
 
-/* LEFT FLOWERS */
+/* =========================
+   LEFT FLOWERS
+   ========================= */
+
 .bf1{
-  width:38%;
-  height:28%;
-  left:-4%;
+  width:32%;
+  height:24%;
+  left:-3%;
   bottom:-2%;
-  background:url('flowers-left.png') center bottom / contain no-repeat;
+
+  background-image:url('flowers-left.png?v=20260831-4');
+  background-position:center bottom;
+  background-size:contain;
+  background-repeat:no-repeat;
+
   --d:.1s
 }
 
 
-/* RIGHT FLOWERS */
+/* =========================
+   RIGHT FLOWERS
+   ========================= */
+
 .bf2{
-  width:38%;
-  height:28%;
-  right:-4%;
+  width:32%;
+  height:24%;
+  right:-3%;
   bottom:-2%;
-  background:url('flowers-right.png') center bottom / contain no-repeat;
+
+  background-image:url('flowers-right.png?v=20260831-4');
+  background-position:center bottom;
+  background-size:contain;
+  background-repeat:no-repeat;
+
   --d:.32s
 }
 
-  /* CENTRE ROSE */
+
+/* =========================
+   CENTRE ROSE
+   ========================= */
+
 .rose{
-  width:32%;
-  height:28%;
+  width:27%;
+  height:24%;
   left:50%;
   bottom:-3%;
-  background:url('flowers-rose.png') center bottom / contain no-repeat;
+
+  background-image:url('flowers-rose.png?v=20260831-4');
+  background-position:center bottom;
+  background-size:contain;
+  background-repeat:no-repeat;
+
   transform:translateX(-50%) scale(.05) rotate(-35deg);
   transform-origin:center bottom;
+
   --d:1s
 }
 
-/* FLOWER ANIMATION */
+
+/* =========================
+   FLOWER ANIMATION
+   ========================= */
 
 .done .bloom{
   animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
@@ -129,12 +165,26 @@ body{
 }
 
 @keyframes bouquet{
-  0%{opacity:0;transform:translateY(18%) scale(.93)}
-  70%{opacity:1;transform:translateY(-2%) scale(1.04)}
-  100%{opacity:1;transform:translateY(0) scale(1)}
+
+  0%{
+    opacity:0;
+    transform:translateY(18%) scale(.93)
+  }
+
+  70%{
+    opacity:1;
+    transform:translateY(-2%) scale(1.04)
+  }
+
+  100%{
+    opacity:1;
+    transform:translateY(0) scale(1)
+  }
+
 }
 
-  .done .rose{
+
+.done .rose{
   animation:rose 1.2s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
 }
 
@@ -152,12 +202,14 @@ body{
 
   100%{
     opacity:1;
-    transform:scale(1)
+    transform:scale(1) rotate(0)
   }
 
 }
 
-  @keyframes rose{
+
+@keyframes rose{
+
   0%{
     opacity:0;
     transform:translateX(-50%) scale(.05) rotate(-35deg)
@@ -170,33 +222,9 @@ body{
 
   100%{
     opacity:1;
-    transform:translateX(-50%) scale(1)
+    transform:translateX(-50%) scale(1) rotate(0)
   }
-}
 
-
-/* =========================
-   BUTTON
-   ========================= */
-
-.control{
-  position:absolute;
-  z-index:10;
-  left:50%;
-  bottom:max(18px,env(safe-area-inset-bottom));
-  transform:translateX(-50%);
-  min-height:44px;
-  padding:12px 20px;
-  color:#fff6e3;
-  background:#1d1612e8;
-  border:1px solid #c5a371;
-  border-radius:2px;
-  font:600 clamp(9px,2.5vw,11px) Georgia,serif;
-  letter-spacing:1.7px;
-  text-transform:uppercase;
-  white-space:nowrap;
-  cursor:pointer;
-  touch-action:manipulation
 }
 
 
@@ -209,14 +237,15 @@ body{
   z-index:9;
   left:8%;
   right:8%;
-  bottom:82px;
+  bottom:35px;
   text-align:center;
   color:#fffaeb;
   text-shadow:0 2px 4px #000;
   font-size:clamp(9px,2.8vw,11px);
   letter-spacing:1.7px;
   text-transform:uppercase;
-  transition:opacity .4s
+  transition:opacity .4s;
+  pointer-events:none
 }
 
 .open .hint{
@@ -242,24 +271,19 @@ body{
     border-radius:0
   }
 
-  .control{
-    bottom:max(13px,env(safe-area-inset-bottom));
-    padding:10px 14px
-  }
-
   .hint{
-    bottom:70px
+    bottom:25px
   }
 
   .bf1,
   .bf2{
-    width:40%;
-    height:27%
+    width:34%;
+    height:24%
   }
 
-    .rose{
-    width:34%;
-    height:27%
+  .rose{
+    width:29%;
+    height:24%
   }
 
 }
@@ -281,12 +305,8 @@ body{
     width:min(76vh,600px)
   }
 
-  .control{
-    bottom:10px
-  }
-
   .hint{
-    bottom:61px
+    bottom:20px
   }
 
 }
@@ -304,7 +324,9 @@ body{
          aria-label="Edin's 21st birthday invitation">
 
 
-  <!-- GATE FRAMES -->
+  <!-- =========================
+       GATE FRAMES
+       ========================= -->
 
   <img class="frame show"
        src="gate-frame-1.png?v=20260831"
@@ -331,7 +353,9 @@ body{
        alt="Edin's 21st birthday invitation">
 
 
-  <!-- FLOWERS -->
+  <!-- =========================
+       FLOWERS
+       ========================= -->
 
   <div class="flowers">
 
@@ -344,23 +368,21 @@ body{
   </div>
 
 
-  <!-- HINT -->
+  <!-- =========================
+       HINT
+       ========================= -->
 
   <p class="hint">
     Tap to open the garden gates
   </p>
 
 
-  <!-- BUTTON -->
-
-  <button class="control" id="control">
-    Open the garden gates
-  </button>
-
 </section>
 
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC
+     ========================= -->
 
 <audio id="music" preload="auto">
 
@@ -376,13 +398,16 @@ body{
 <script>
 
 const i = document.getElementById('invite');
-const b = document.getElementById('control');
 const m = document.getElementById('music');
 
 const f = [...document.querySelectorAll('.frame')];
 
 let waits = [];
 
+
+/* =========================
+   CLEAR TIMERS
+   ========================= */
 
 function clear(){
 
@@ -392,6 +417,10 @@ function clear(){
 
 }
 
+
+/* =========================
+   RESET INVITATION
+   ========================= */
 
 function reset(){
 
@@ -403,8 +432,6 @@ function reset(){
 
   i.classList.remove('open','done');
 
-  b.textContent = 'Open the garden gates';
-
   m.pause();
 
   m.currentTime = 0;
@@ -412,7 +439,11 @@ function reset(){
 }
 
 
-b.onclick = () => {
+/* =========================
+   OPEN INVITATION
+   ========================= */
+
+function openInvitation(){
 
   if(i.classList.contains('open')){
 
@@ -422,8 +453,6 @@ b.onclick = () => {
 
 
   i.classList.add('open');
-
-  b.textContent = 'Close the garden gates';
 
   m.currentTime = 0;
 
@@ -453,7 +482,14 @@ b.onclick = () => {
 
   });
 
-};
+}
+
+
+/* =========================
+   TAP ANYWHERE TO OPEN
+   ========================= */
+
+i.addEventListener('click',openInvitation);
 
 </script>
 
