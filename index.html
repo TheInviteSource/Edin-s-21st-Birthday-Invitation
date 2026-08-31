@@ -68,14 +68,19 @@ body{
 .flowers{
   position:absolute;
   z-index:5;
-  inset:0;
-  pointer-events:none
+  left:0;
+  right:0;
+  bottom:0;
+  height:36%;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(18%) scale(.93);
+  transform-origin:center bottom;
+  background:url('white-flower.png') center bottom / cover no-repeat
 }
 
 .bloom{
-  position:absolute;
-  opacity:0;
-  filter:drop-shadow(0 4px 6px #170c0a99);
+  display:none
 }
 
 
@@ -116,6 +121,16 @@ body{
 
 .done .bloom{
   animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+}
+
+.done .flowers{
+  animation:bouquet .9s cubic-bezier(.17,.88,.28,1.35) forwards
+}
+
+@keyframes bouquet{
+  0%{opacity:0;transform:translateY(18%) scale(.93)}
+  70%{opacity:1;transform:translateY(-2%) scale(1.04)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
 }
 
   .done .rose{
