@@ -4,64 +4,90 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
 <title>Edin's 21st Birthday</title>
 
 <style>
 
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent
+  -webkit-tap-highlight-color:transparent;
 }
 
 body{
   margin:0;
   background:#18110d;
   font-family:Georgia,serif;
-  overscroll-behavior:none
+  overscroll-behavior:none;
 }
 
 .page{
   min-height:100svh;
   min-height:100dvh;
+
   display:grid;
   place-items:center;
+
   padding:max(12px,env(safe-area-inset-top))
           max(12px,env(safe-area-inset-right))
           max(12px,env(safe-area-inset-bottom))
           max(12px,env(safe-area-inset-left));
-  background:radial-gradient(circle,#6b4b3299,transparent 43%),#1c130e
+
+  background:
+    radial-gradient(circle,#6b4b3299,transparent 43%),
+    #1c130e;
 }
 
 .invite{
   position:relative;
+
   width:min(100%,600px);
+
   height:min(calc(100svh - 24px),800px);
   height:min(calc(100dvh - 24px),800px);
+
   aspect-ratio:3/4;
+
   overflow:hidden;
+
   background:#1b120e;
+
   box-shadow:0 18px 55px #000;
+
   border:1px solid #8c6949;
   border-radius:3px;
+
   cursor:pointer;
-  touch-action:manipulation
+  touch-action:manipulation;
 }
+
+
+/* =========================
+   GATE FRAMES
+   ========================= */
 
 .frame{
   position:absolute;
+
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
+
   opacity:0;
+
   transition:opacity .7s ease;
+
   filter:contrast(1.02) saturate(.9);
-  pointer-events:none
+
+  pointer-events:none;
 }
 
 .frame:first-child,
 .frame.show{
-  opacity:1
+  opacity:1;
 }
 
 
@@ -71,29 +97,42 @@ body{
 
 .flowers{
   position:absolute;
+
   z-index:5;
+
   left:0;
   right:0;
   bottom:0;
-  height:24%;
+
+  width:100%;
+  height:27%;
+
   pointer-events:none;
 }
 
+
+/* =========================
+   ALL WHITE FLOWERS
+   ========================= */
+
 .bloom{
   display:block;
+
   position:absolute;
 
-  width:32%;
+  width:30%;
   height:100%;
 
-  background-image:url('white-flower.png?v=20260831-6');
+  background-image:url('white-flower.png?v=20260831-8');
+
   background-position:center bottom;
-  background-size:contain;
   background-repeat:no-repeat;
+  background-size:contain;
 
   opacity:0;
 
   transform:scale(.05) rotate(-18deg);
+
   transform-origin:center bottom;
 }
 
@@ -103,7 +142,7 @@ body{
    ========================= */
 
 .bf-left{
-  left:-3%;
+  left:2%;
   bottom:-2%;
 
   --d:.1s;
@@ -118,7 +157,10 @@ body{
   left:50%;
   bottom:-2%;
 
-  transform:translateX(-50%) scale(.05) rotate(-18deg);
+  transform:
+    translateX(-50%)
+    scale(.05)
+    rotate(-18deg);
 
   --d:.32s;
 }
@@ -129,7 +171,7 @@ body{
    ========================= */
 
 .bf-right{
-  right:-3%;
+  right:2%;
   bottom:-2%;
 
   --d:.54s;
@@ -137,61 +179,92 @@ body{
 
 
 /* =========================
-   FLOWER ANIMATION
+   LEFT + RIGHT FLOWER ANIMATION
    ========================= */
 
-.done .bloom{
-  animation:bloom .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+.done .bf-left,
+.done .bf-right{
+
+  animation:
+    bloom
+    .9s
+    cubic-bezier(.17,.88,.28,1.35)
+    var(--d)
+    forwards;
 }
 
-
-/* =========================
-   LEFT + RIGHT ANIMATION
-   ========================= */
 
 @keyframes bloom{
 
   0%{
     opacity:0;
-    transform:scale(.05) rotate(-18deg)
+
+    transform:
+      scale(.05)
+      rotate(-18deg);
   }
 
   65%{
     opacity:1;
-    transform:scale(1.13) rotate(7deg)
+
+    transform:
+      scale(1.13)
+      rotate(7deg);
   }
 
   100%{
     opacity:1;
-    transform:scale(1) rotate(0)
+
+    transform:
+      scale(1)
+      rotate(0);
   }
 
 }
 
 
 /* =========================
-   CENTRE ANIMATION
+   CENTRE FLOWER ANIMATION
    ========================= */
 
 .done .bf-center{
-  animation:bloomCentre .9s cubic-bezier(.17,.88,.28,1.35) var(--d) forwards
+
+  animation:
+    bloomCentre
+    .9s
+    cubic-bezier(.17,.88,.28,1.35)
+    var(--d)
+    forwards;
 }
+
 
 @keyframes bloomCentre{
 
   0%{
     opacity:0;
-    transform:translateX(-50%) scale(.05) rotate(-18deg)
+
+    transform:
+      translateX(-50%)
+      scale(.05)
+      rotate(-18deg);
   }
 
   65%{
     opacity:1;
-    transform:translateX(-50%) scale(1.13) rotate(7deg)
+
+    transform:
+      translateX(-50%)
+      scale(1.13)
+      rotate(7deg);
   }
 
   100%{
     opacity:1;
-    transform:translateX(-50%) scale(1) rotate(0)
+
+    transform:
+      translateX(-50%)
+      scale(1)
+      rotate(0);
   }
 
 }
@@ -203,22 +276,33 @@ body{
 
 .hint{
   position:absolute;
+
   z-index:9;
+
   left:8%;
   right:8%;
+
   bottom:35px;
+
   text-align:center;
+
   color:#fffaeb;
+
   text-shadow:0 2px 4px #000;
+
   font-size:clamp(9px,2.8vw,11px);
+
   letter-spacing:1.7px;
+
   text-transform:uppercase;
+
   transition:opacity .4s;
-  pointer-events:none
+
+  pointer-events:none;
 }
 
 .open .hint{
-  opacity:0
+  opacity:0;
 }
 
 
@@ -229,24 +313,28 @@ body{
 @media(max-width:380px){
 
   .page{
-    padding:0
+    padding:0;
   }
 
   .invite{
+
     width:100vw;
+
     height:100svh;
     height:100dvh;
+
     border:0;
-    border-radius:0
+    border-radius:0;
   }
 
   .hint{
-    bottom:25px
+    bottom:25px;
   }
 
   .bloom{
+
     width:34%;
-    height:100%
+    height:100%;
   }
 
 }
@@ -259,17 +347,19 @@ body{
 @media(orientation:landscape) and (max-height:600px){
 
   .page{
-    padding:0
+    padding:0;
   }
 
   .invite{
+
     height:100svh;
     height:100dvh;
-    width:min(76vh,600px)
+
+    width:min(76vh,600px);
   }
 
   .hint{
-    bottom:20px
+    bottom:20px;
   }
 
 }
@@ -282,37 +372,57 @@ body{
 
 <main class="page">
 
-<section class="invite"
-         id="invite"
-         aria-label="Edin's 21st birthday invitation">
+<section
+  class="invite"
+  id="invite"
+  aria-label="Edin's 21st birthday invitation"
+>
 
   <!-- =========================
        GATE FRAMES
        ========================= -->
 
-<img class="frame show"
-    src="gate-frame-1.png?v=20260831"
-    alt="Closed wrought-iron garden gates">
+<img
+class="frame show"
+src="gate-frame-1.png?v=20260831"
+alt="Closed wrought-iron garden gates"
 
-<img class="frame"
-    src="gate-frame-2.png?v=20260831"
-    alt="">
+>
 
-<img class="frame"
-    src="gate-frame-3.png?v=20260831"
-    alt="">
+<img
+class="frame"
+src="gate-frame-2.png?v=20260831"
+alt=""
 
-<img class="frame"
-    src="gate-frame-4.png?v=20260831"
-    alt="">
+>
 
-<img class="frame"
-    src="gate-frame-5.png?v=20260831"
-    alt="">
+<img
+class="frame"
+src="gate-frame-3.png?v=20260831"
+alt=""
 
-<img class="frame"
-    src="gate-frame-6.png?v=20260831"
-    alt="Edin's 21st birthday invitation">
+>
+
+<img
+class="frame"
+src="gate-frame-4.png?v=20260831"
+alt=""
+
+>
+
+<img
+class="frame"
+src="gate-frame-5.png?v=20260831"
+alt=""
+
+>
+
+<img
+class="frame"
+src="gate-frame-6.png?v=20260831"
+alt="Edin's 21st birthday invitation"
+
+>
 
   <!-- =========================
        WHITE FLOWERS
@@ -344,11 +454,17 @@ body{
      MUSIC
      ========================= -->
 
-<audio id="music" preload="auto">
+<audio
+id="music"
+preload="auto"
+
+>
 
 <source
- src="la-vie-en-rose.mp3"
- type="audio/mpeg">
+src="la-vie-en-rose.mp3"
+type="audio/mpeg"
+
+>
 
 </audio>
 
@@ -357,9 +473,12 @@ body{
 <script>
 
 const i = document.getElementById('invite');
+
 const m = document.getElementById('music');
 
-const f = [...document.querySelectorAll('.frame')];
+const f = [
+  ...document.querySelectorAll('.frame')
+];
 
 let waits = [];
 
@@ -385,11 +504,19 @@ function reset(){
 
   clear();
 
-  f.forEach((x,n) =>
-    x.classList.toggle('show',n === 0)
-  );
+  f.forEach((x,n) => {
 
-  i.classList.remove('open','done');
+    x.classList.toggle(
+      'show',
+      n === 0
+    );
+
+  });
+
+  i.classList.remove(
+    'open',
+    'done'
+  );
 
   m.pause();
 
@@ -413,12 +540,19 @@ function openInvitation(){
 
   i.classList.add('open');
 
+
   m.currentTime = 0;
 
   m.play().catch(() => {});
 
 
-  [850,1700,2550,3600,6000].forEach((t,n) => {
+  [
+    850,
+    1700,
+    2550,
+    3600,
+    6000
+  ].forEach((t,n) => {
 
     waits.push(
 
@@ -448,7 +582,10 @@ function openInvitation(){
    TAP ANYWHERE TO OPEN
    ========================= */
 
-i.addEventListener('click',openInvitation);
+i.addEventListener(
+  'click',
+  openInvitation
+);
 
 </script>
 
